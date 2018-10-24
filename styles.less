@@ -3,6 +3,7 @@
 //DEFAULTS
 
 * {
+  box-sizing: border-box;
   -khtml-user-select  : none;
   -o-user-select      : none;
   -moz-user-select    : none;
@@ -44,6 +45,9 @@ img {
 img.logo {
   width : 75%;
   cursor: pointer;
+  @media (max-width: 640px){
+    width: 100%;
+  }
 }
 
 .logo-wrap{
@@ -172,10 +176,11 @@ header {
   &.date {
     font-size : @xxlarge;
     .buy-tickets {
-      margin     : 20px;
+      margin     : 25px;
       padding    : 20px;
       font-size  : @xsmall;
       transition : all linear 0.3s;
+      border-bottom: 1px solid;
       span {
         position   : relative;
         display    : inline-block;
@@ -286,6 +291,7 @@ header {
           top        : 4px;
           width      : 110px;
           transition : all ease 0.3s;
+          text-align: center;
           .fa {
             margin-right : 10px;
             position     : relative;
@@ -297,6 +303,13 @@ header {
           &.big {
             width : 150px;
           }
+          @media (max-width: 640px){
+            width: 100%;
+            min-width: 110px;
+            &.big {
+              width : 100%;
+            }
+          }
         }
         &:hover {
           .name {
@@ -306,6 +319,13 @@ header {
               &.big {
                 right : -170px;
               }
+              @media (max-width: 640px){
+                right: -20px;
+                bottom: -100%;
+                &.big{
+                  right: -20px;
+                }
+              }
             }
             &:after {
               opacity : 0.8;
@@ -313,15 +333,39 @@ header {
             &:before {
               opacity : 0.8;
             }
+            @media (max-width: 640px){
+              margin-left: 0;
+            }
           }
           .socials {
             opacity : 1;
             left    : 95%;
-            @media only screen(max-width: 640px){
+            @media (max-width: 640px){
               left: 0;
-              bottom: -100%;
+              top: 50%;
             }
           }
+        }
+        @media (max-width: 640px){
+          padding: 0 0 40px;
+        }
+      }
+    }
+  }
+  &.brands{
+    margin: 20vh auto;
+    .brand{
+      display: inline-block;
+      padding: 50px;
+      vertical-align: top;
+      img{
+        max-height: 100px;
+        width: auto;
+      }
+      @media (max-width: 640px) {
+        img{
+          max-height: unset;
+          width: 100%;
         }
       }
     }
