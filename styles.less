@@ -15,10 +15,10 @@
 }
 
 html {
-  background      : url('/img/hypernight_website_bg.png') center center no-repeat;
-  background-size : cover;
-  background-attachment: fixed;
-  min-height      : 100vh;
+  background            : #000829 url('/img/hypernight_website_bg.png') center center no-repeat;
+  background-size       : cover;
+  background-attachment : fixed;
+  min-height            : 100vh;
 }
 
 h1, p {
@@ -43,6 +43,11 @@ img {
 
 img.logo {
   width : 75%;
+  cursor: pointer;
+}
+
+.logo-wrap{
+  display: block;
 }
 
 a {
@@ -167,36 +172,52 @@ header {
   &.date {
     font-size : @xxlarge;
     .buy-tickets {
-      margin        : 20px;
-      padding       : 20px;
-      font-size     : @xsmall;
-      border        : 3px solid;
-      border-radius : 20px;
-      line-height   : 1;
-      transition    : all linear 0.3s;
+      margin     : 20px;
+      padding    : 20px;
+      font-size  : @xsmall;
+      transition : all linear 0.3s;
       span {
         position   : relative;
         display    : inline-block;
         transition : all linear 0.3s;
         cursor     : pointer;
-        &:before {
-          content    : '';
-          width      : 0%;
-          height     : 3px;
-          background : @pink;
+        .spark {
+          position: absolute;
+        }
+        &:after {
+          content    : attr(name);
           position   : absolute;
-          left       : 0;
-          bottom     : 0;
           display    : block;
+          top        : 0;
+          left       : -2px;
+          color      : @pink;
+          width      : 100%;
+          height     : 100%;
+          z-index    : -1;
+          opacity    : 0;
+          transition : all ease 0.3s;
+        }
+        &:before {
+          content    : attr(name);
+          position   : absolute;
+          display    : block;
+          top        : 0;
+          left       : 2px;
+          color      : @cyan;
+          width      : 100%;
+          height     : 100%;
+          z-index    : -1;
+          opacity    : 0;
           transition : all ease 0.3s;
         }
       }
       &:hover {
-        border-color : @cyan;
         span {
-          color : @pink;
+          &:after {
+            opacity : 0.8;
+          }
           &:before {
-            width : 100%;
+            opacity : 0.8;
           }
         }
       }
@@ -231,17 +252,6 @@ header {
           position   : relative;
           z-index    : 3;
           transition : all ease 0.3s;
-          .spark {
-            position        : absolute;
-            bottom          : -13px;
-            right           : -20px;
-            width           : 50px;
-            height          : 35px;
-            background      : url(/img/SPARK.png) center center no-repeat;
-            background-size : 50%;
-            transition      : all ease 0.3s;
-            z-index         : -1;
-          }
           &:after {
             content    : attr(name);
             position   : absolute;
@@ -292,9 +302,9 @@ header {
           .name {
             margin-left : -30%;
             .spark {
-              right: -130px;
-              &.big{
-                right: -170px;
+              right : -130px;
+              &.big {
+                right : -170px;
               }
             }
             &:after {
@@ -307,9 +317,25 @@ header {
           .socials {
             opacity : 1;
             left    : 95%;
+            @media only screen(max-width: 640px){
+              left: 0;
+              bottom: -100%;
+            }
           }
         }
       }
     }
   }
+}
+
+.spark {
+  position        : absolute;
+  bottom          : -13px;
+  right           : -20px;
+  width           : 50px;
+  height          : 35px;
+  background      : url(/img/SPARK.png) center center no-repeat;
+  background-size : 50%;
+  transition      : all ease 0.3s;
+  z-index         : -1;
 }
