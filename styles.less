@@ -52,7 +52,9 @@ img.logo {
 }
 
 .logo-wrap {
-  display : block;
+  display  : block;
+  position : relative;
+  z-index  : 5;
 }
 
 #particles-js {
@@ -362,14 +364,17 @@ header {
     }
   }
   &.brands {
-    margin : 20vh auto;
+    margin : 18vh auto;
     .brand {
       display        : inline-block;
       padding        : 50px;
       vertical-align : top;
+      z-index        : 5;
+      position       : relative;
       img {
         max-height : 100px;
         width      : auto;
+        cursor     : pointer;
       }
       @media (max-width : 640px) {
         img {
